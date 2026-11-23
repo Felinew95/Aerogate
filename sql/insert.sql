@@ -158,13 +158,13 @@ INSERT INTO billet (id_billet, numero_siege, categorie, porte, id_pers, id_vol) 
 (24, '28A', 'ECONOMIE', 'H10', 24, 8);
 
 -- Insertion des donnees dans la table scanner
-INSERT INTO scanner (id_scan, modele, adresse_ip) VALUES
-(1, 'SCA100', '192.168.10.10'),
-(2, 'SCA101', '192.168.10.11'),
-(3, 'SCA102', '192.168.10.12'),
-(4, 'SCA103', '192.168.10.13'),
-(5, 'SCA104', '192.168.10.14'),
-(6, 'SCA200', '192.168.20.10');
+INSERT INTO scanner (id_scan, modele, adresse_ip, porte) VALUES
+(1, 'SCA100', '192.168.10.10', 'A12'),
+(2, 'SCA101', '192.168.10.11', 'B05'),
+(3, 'SCA102', '192.168.10.12', 'C08'),
+(4, 'SCA103', '192.168.10.13', 'D03'),
+(5, 'SCA104', '192.168.10.14', 'E11'),
+(6, 'SCA200', '192.168.20.10', 'F02');
 
 -- Insertion des donnees dans la table identifie
 INSERT INTO identifie (id_scan, id_billet) VALUES
