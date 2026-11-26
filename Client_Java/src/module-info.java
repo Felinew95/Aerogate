@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module Client_Java {
-}
