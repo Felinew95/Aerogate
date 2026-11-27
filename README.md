@@ -37,9 +37,9 @@ Se connecter ensuite à cette base :
 \c aerogate
 ```
 
-Pour créer les tables, exécuter le contenu du fichier `base/tables.sql` dans PostgreSQL.
+Pour créer les tables, exécuter le contenu du fichier `SQL/tables.sql` dans PostgreSQL.
 
-Le fichier `base/insert.sql` permet ensuite d'insérer les données nécessaires aux tests.
+Le fichier `SQL/insert.sql` permet ensuite d'insérer les données nécessaires aux tests.
 
 Les scripts SQL sont prévus pour une base de données vide.
 
