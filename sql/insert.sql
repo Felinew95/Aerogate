@@ -158,15 +158,21 @@ INSERT INTO billet (id_billet, numero_siege, categorie, porte, id_pers, id_vol) 
 (24, '28A', 'ECONOMIE', 'H10', 24, 8);
 
 -- Insertion des donnees dans la table scanner
+-- Insertion des données dans la table scanner
+
 INSERT INTO scanner (id_scan, modele, adresse_ip, porte) VALUES
 (1, 'SCA100', '192.168.10.10', 'A12'),
 (2, 'SCA101', '192.168.10.11', 'B05'),
 (3, 'SCA102', '192.168.10.12', 'C08'),
 (4, 'SCA103', '192.168.10.13', 'D03'),
 (5, 'SCA104', '192.168.10.14', 'E11'),
-(6, 'SCA200', '192.168.20.10', 'F02');
+(6, 'SCA200', '192.168.20.10', 'F02'),
+(7, 'SCA201', '192.168.20.11', 'G04'),
+(8, 'SCA202', '192.168.20.12', 'H10');
 
--- Insertion des donnees dans la table identifie
+
+-- Insertion des données dans la table identifie
+
 INSERT INTO identifie (id_scan, id_billet) VALUES
 (1, 1), (1, 2), (1, 3),
 (2, 4), (2, 5), (2, 6),
@@ -174,8 +180,8 @@ INSERT INTO identifie (id_scan, id_billet) VALUES
 (4, 10), (4, 11), (4, 12),
 (5, 13), (5, 14), (5, 15),
 (6, 16), (6, 17), (6, 18),
-(1, 19), (2, 20), (3, 21),
-(4, 22), (5, 23), (6, 24);
+(7, 19), (7, 20), (7, 21),
+(8, 22), (8, 23), (8, 24);
 
 -- Insertion des donnees dans la table utilise
 INSERT INTO utilise (id_scan, id_pers) VALUES
