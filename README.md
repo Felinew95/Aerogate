@@ -53,10 +53,10 @@ python pip install psycopg
 
 ## 3. Lancer le serveur
 
-Démarrer le serveur Python avec la commande suivante :
+Démarrer le serveur Python avec la commande suivante depuis le répertoire Serveur_Python :
 
 ```bash
-python serveur/serveur_aerogate.py
+python -m main.serveur
 ```
 
 Par défaut, le serveur écoute sur l'adresse locale `127.0.0.1` et le port `5000`.
