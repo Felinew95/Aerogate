@@ -1,207 +1,110 @@
-
--- Définition du type CATEGORIE
-
+-- Création du type CATEGORIE pour le vol
 CREATE TYPE CATEGORIE AS ENUM ('1ERE', 'BUSINESS', 'ECONOMIE');
 
-
--- Table ADRESSE
-
+-- Création de la table adresse
 CREATE TABLE adresse (
-    id_adr INTEGER,
-    numero_adr INTEGER NOT NULL,
-    nom_adr VARCHAR(100) NOT NULL,
-    code_postal CHAR(5) NOT NULL,
-    ville_adr VARCHAR(50) NOT NULL,
-    pays_adr VARCHAR(50) NOT NULL,
-
-    PRIMARY KEY (id_adr),
-    CHECK (numero_adr > 0),
-    CHECK (TRIM(nom_adr) <> ''),
-    CHECK (code_postal ~ '^[0-9]{5}$'),
-    CHECK (TRIM(ville_adr) <> ''),
-    CHECK (TRIM(pays_adr) <> '')
+    id_adr SERIAL PRIMARY KEY,
+    numero_adr INTEGER NOT NULL CHECK (numero_adr > 0),
+    nom_adr VARCHAR(100) NOT NULL CHECK (nom_adr ~ '^[A-Za-zÀ-ÿ0-9 .''-]{2,100}$'),
+    code_postal CHAR(5) NOT NULL CHECK (code_postal ~ '^[0-9]{5}$'),
+    ville_adr VARCHAR(50) NOT NULL CHECK (ville_adr ~ '^[A-Za-zÀ-ÿ .''-]{2,50}$'),
+    pays_adr VARCHAR(50) NOT NULL CHECK (pays_adr ~ '^[A-Za-zÀ-ÿ .''-]{2,50}$')
 );
 
-
--- Table AEROPORT
-
+-- Création de la table aeroport
 CREATE TABLE aeroport (
-    id_aero INTEGER,
-    nom_aero VARCHAR(100) NOT NULL,
-    code_iata CHAR(3) NOT NULL,
-    id_adr INTEGER NOT NULL,
-
-    PRIMARY KEY (id_aero),
-    UNIQUE (code_iata),
-    CHECK (TRIM(nom_aero) <> ''),
-    CHECK (code_iata ~ '^[A-Z]{3}$'),
-    FOREIGN KEY (id_adr) REFERENCES adresse(id_adr)
+    id_aero SERIAL PRIMARY KEY,
+    nom_aero VARCHAR(100) NOT NULL CHECK (nom_aero ~ '^[A-Za-zÀ-ÿ .''-]{2,100}$'),
+    code_iata CHAR(3) NOT NULL UNIQUE CHECK (code_iata ~ '^[A-Z]{3}$'),
+    id_adr INTEGER NOT NULL REFERENCES adresse(id_adr)
 );
 
-
---  Table COMPAGNIE
-
+-- Création de la table compagnie
 CREATE TABLE compagnie (
-    id_comp INTEGER,
-    nom_comp VARCHAR(50) NOT NULL,
-    code_iata CHAR(2) NOT NULL,
-    telephone_comp CHAR(10) NOT NULL,
-    id_adr INTEGER NOT NULL,
-
-    PRIMARY KEY (id_comp),
-    UNIQUE (code_iata),
-    CHECK (TRIM(nom_comp) <> ''),
-    CHECK (code_iata ~ '^[A-Z0-9]{2}$'),
-    CHECK (telephone_comp ~ '^0[0-9]{9}$'),
-    FOREIGN KEY (id_adr) REFERENCES adresse(id_adr)
+    id_comp SERIAL PRIMARY KEY,
+    nom_comp VARCHAR(50) NOT NULL CHECK (nom_comp ~ '^[A-Za-zÀ-ÿ0-9 .''&-]{2,50}$'),
+    code_iata CHAR(2) NOT NULL UNIQUE CHECK (code_iata ~ '^[A-Z0-9]{2}$'),
+    telephone_comp CHAR(10) NOT NULL CHECK (telephone_comp ~ '^0[0-9]{9}$'),
+    id_adr INTEGER NOT NULL REFERENCES adresse(id_adr)
 );
 
-
--- Table PERSONNE
-
+-- Création de la table personne
 CREATE TABLE personne (
-    id_pers INTEGER,
-    nom_pers VARCHAR(30) NOT NULL,
-    prenom_pers VARCHAR(50) NOT NULL,
-    telephone_pers CHAR(10) NOT NULL,
-    date_naissance DATE NOT NULL,
-    email_pers VARCHAR(200) NOT NULL,
-    id_adr INTEGER NOT NULL,
-
-    PRIMARY KEY (id_pers),
-    CHECK (TRIM(nom_pers) <> ''),
-    CHECK (TRIM(prenom_pers) <> ''),
-    CHECK (telephone_pers ~ '^0[0-9]{9}$'),
-    CHECK (date_naissance <= CURRENT_DATE),
-    CHECK (email_pers LIKE '%_@_%._%'),
-    FOREIGN KEY (id_adr) REFERENCES adresse(id_adr)
+    id_pers SERIAL PRIMARY KEY,
+    nom_pers VARCHAR(30) NOT NULL CHECK (nom_pers ~ '^[A-Za-zÀ-ÿ .''-]{2,30}$'),
+    prenom_pers VARCHAR(50) NOT NULL CHECK (prenom_pers ~ '^[A-Za-zÀ-ÿ .''-]{2,50}$'),
+    telephone_pers CHAR(10) NOT NULL CHECK (telephone_pers ~ '^0[0-9]{9}$'),
+    date_naissance DATE NOT NULL CHECK (date_naissance <= CURRENT_DATE),
+    email_pers VARCHAR(200) NOT NULL CHECK (email_pers ~ '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
+    id_adr INTEGER NOT NULL REFERENCES adresse(id_adr)
 );
 
-
---  Table PASSAGER
-
+-- Création de la table passager
 CREATE TABLE passager (
-    id_pers INTEGER,
-    numero_passeport VARCHAR(20) NOT NULL,
-    nationalite_passager VARCHAR(50) NOT NULL,
-
-    PRIMARY KEY (id_pers),
-    UNIQUE (numero_passeport),
-    CHECK (numero_passeport ~ '^[A-Z0-9]+$'),
-    CHECK (TRIM(nationalite_passager) <> ''),
-    FOREIGN KEY (id_pers) REFERENCES personne(id_pers)
+    id_pers INTEGER PRIMARY KEY REFERENCES personne(id_pers),
+    numero_passeport VARCHAR(20) NOT NULL UNIQUE CHECK (numero_passeport ~ '^[A-Z0-9]+$'),
+    nationalite_passager VARCHAR(50) NOT NULL CHECK (nationalite_passager ~ '^[A-Za-zÀ-ÿ -]{2,50}$')
 );
 
-
---  Table PERSONNEL
-
+-- Création de la table personnel
 CREATE TABLE personnel (
-    id_pers INTEGER,
-    role_personnel VARCHAR(50) NOT NULL,
-    matricule_personnel VARCHAR(20) NOT NULL,
-    statut_personnel BOOLEAN NOT NULL DEFAULT TRUE,
-
-    PRIMARY KEY (id_pers),
-    UNIQUE (matricule_personnel),
-    CHECK (TRIM(role_personnel) <> ''),
-    CHECK (matricule_personnel ~ '^[A-Za-z0-9]+$'),
-    FOREIGN KEY (id_pers) REFERENCES personne(id_pers)
+    id_pers INTEGER PRIMARY KEY REFERENCES personne(id_pers),
+    role_personnel VARCHAR(50) NOT NULL CHECK (role_personnel ~ '^[A-Za-zÀ-ÿ -]{2,50}$'),
+    matricule_personnel VARCHAR(20) NOT NULL UNIQUE CHECK (matricule_personnel ~ '^[A-Za-z0-9]+$'),
+    statut_personnel BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-
---  Table AVION
-
+-- Création de la table avion
 CREATE TABLE avion (
-    id_avion INTEGER,
-    immatriculation VARCHAR(10) NOT NULL,
-    modele VARCHAR(100) NOT NULL,
-    capacite_max INTEGER NOT NULL,
-    id_comp INTEGER NOT NULL,
-
-    PRIMARY KEY (id_avion),
-    UNIQUE (immatriculation),
-    CHECK (immatriculation ~ '^[A-Z0-9-]+$'),
-    CHECK (TRIM(modele) <> ''),
-    CHECK (capacite_max > 0),
-    FOREIGN KEY (id_comp) REFERENCES compagnie(id_comp)
+    id_avion SERIAL PRIMARY KEY,
+    immatriculation VARCHAR(10) NOT NULL UNIQUE CHECK (immatriculation ~ '^[A-Z0-9-]+$'),
+    modele VARCHAR(100) NOT NULL CHECK (modele ~ '^[A-Za-z0-9 .-]{2,100}$'),
+    capacite_max INTEGER NOT NULL CHECK (capacite_max > 0),
+    id_comp INTEGER NOT NULL REFERENCES compagnie(id_comp)
 );
 
-
--- 8. Table vol
-
+-- Création de la table vol
 CREATE TABLE vol (
-    id_vol INTEGER,
-    numero_vol VARCHAR(20) NOT NULL,
+    id_vol SERIAL PRIMARY KEY,
+    numero_vol VARCHAR(20) NOT NULL CHECK (numero_vol ~ '^[A-Z0-9]+$'),
     date_depart DATE NOT NULL,
     heure_depart TIME NOT NULL,
-    heure_embarquement TIME NOT NULL,
-    id_aero_depart INTEGER NOT NULL,
-    id_aero_arrive INTEGER NOT NULL,
-    id_avion INTEGER NOT NULL,
-
-    PRIMARY KEY (id_vol),
-    UNIQUE (numero_vol, date_depart, heure_depart),
-    CHECK (numero_vol ~ '^[A-Z0-9]+$'),
-    CHECK (heure_embarquement < heure_depart),
-    FOREIGN KEY (id_aero_depart) REFERENCES aeroport(id_aero),
-    FOREIGN KEY (id_aero_arrive) REFERENCES aeroport(id_aero),
-    FOREIGN KEY (id_avion) REFERENCES avion(id_avion)
+    heure_embarquement TIME NOT NULL CHECK (heure_embarquement < heure_depart),
+    id_aero_depart INTEGER NOT NULL REFERENCES aeroport(id_aero),
+    id_aero_arrive INTEGER NOT NULL REFERENCES aeroport(id_aero),
+    id_avion INTEGER NOT NULL REFERENCES avion(id_avion),
+    UNIQUE (numero_vol, date_depart, heure_depart)
 );
 
-
---  Table BILLET
-
+-- Création de la table billet
 CREATE TABLE billet (
-    id_billet INTEGER,
-    numero_siege VARCHAR(3) NOT NULL,
+    id_billet SERIAL PRIMARY KEY,
+    numero_siege VARCHAR(3) NOT NULL CHECK (numero_siege ~ '^[0-9]{1,2}[A-Z]$'),
     categorie CATEGORIE NOT NULL,
-    porte VARCHAR(5) NOT NULL,
-    id_pers INTEGER NOT NULL,
-    id_vol INTEGER NOT NULL,
-
-    PRIMARY KEY (id_billet),
-    UNIQUE (numero_siege, id_vol),
-    CHECK (numero_siege ~ '^[0-9]{1,2}[A-Z]$'),
-    CHECK (porte ~ '^[A-Z0-9]{1,5}$'),
-    FOREIGN KEY (id_pers) REFERENCES passager(id_pers),
-    FOREIGN KEY (id_vol) REFERENCES vol(id_vol)
+    porte VARCHAR(5) NOT NULL CHECK (porte ~ '^[A-Z0-9]{1,5}$'),
+    id_pers INTEGER NOT NULL REFERENCES passager(id_pers),
+    id_vol INTEGER NOT NULL REFERENCES vol(id_vol),
+    UNIQUE (numero_siege, id_vol)
 );
 
-
---  Table SCANNER
-
+-- Création de la table scanner
 CREATE TABLE scanner (
-    id_scan INTEGER,
-    modele VARCHAR(20) NOT NULL,
-    adresse_ip INET NOT NULL,
-    porte VARCHAR(5) NOT NULL,
-
-    PRIMARY KEY (id_scan),
-    UNIQUE (adresse_ip),
-    CHECK (TRIM(modele) <> ''),
-    CHECK (porte ~ '^[A-Z0-9]{1,5}$')
+    id_scan SERIAL PRIMARY KEY,
+    modele VARCHAR(20) NOT NULL CHECK (modele ~ '^[A-Za-z0-9 _-]{2,20}$'),
+    adresse_ip INET NOT NULL UNIQUE,
+    porte VARCHAR(5) NOT NULL CHECK (porte ~ '^[A-Z0-9]{1,5}$')
 );
 
-
---  Table IDENTIFIE
-
+-- Création de la table identifie
 CREATE TABLE identifie (
-    id_scan INTEGER NOT NULL,
-    id_billet INTEGER NOT NULL,
-
-    PRIMARY KEY (id_scan, id_billet),
-    FOREIGN KEY (id_scan) REFERENCES scanner(id_scan),
-    FOREIGN KEY (id_billet) REFERENCES billet(id_billet)
+    id_scan INTEGER NOT NULL REFERENCES scanner(id_scan),
+    id_billet INTEGER NOT NULL REFERENCES billet(id_billet),
+    PRIMARY KEY (id_scan, id_billet)
 );
 
-
---  Table UTILISE
-
+-- Création de la table utilise
 CREATE TABLE utilise (
-    id_scan INTEGER NOT NULL,
-    id_pers INTEGER NOT NULL,
-
-    PRIMARY KEY (id_scan, id_pers),
-    FOREIGN KEY (id_scan) REFERENCES scanner(id_scan),
-    FOREIGN KEY (id_pers) REFERENCES personnel(id_pers)
+    id_scan INTEGER NOT NULL REFERENCES scanner(id_scan),
+    id_pers INTEGER NOT NULL REFERENCES personnel(id_pers),
+    PRIMARY KEY (id_scan, id_pers)
 );
