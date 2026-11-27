@@ -1,0 +1,56 @@
+2026-11-27 12:13:26,252 | INFO | DEMANDE | hote=127.0.0.1 | port=5000
+2026-11-27 12:14:11,733 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 12:14:11,733 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-27 12:14:11,916 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Agent non autorisé sur ce scanner.
+2026-11-27 12:14:55,210 | INFO | DEMANDE | hote=127.0.0.1 | port=5000
+2026-11-27 12:15:12,386 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 12:15:12,387 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-27 12:15:12,439 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Agent non autorisé sur ce scanner.
+2026-11-27 14:30:01,231 | INFO | DEMANDE | hote=127.0.0.1 | port=5000
+2026-11-27 14:30:36,914 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:30:46,921 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_REQUETE | message=Communication interrompue.
+2026-11-27 14:31:27,055 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:31:28,708 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=3 | agent=27
+2026-11-27 14:33:36,511 | INFO | DEMANDE | hote=127.0.0.1 | port=5000
+2026-11-27 14:33:44,497 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:33:46,043 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=3 | agent=27
+2026-11-27 14:35:04,369 | INFO | DEMANDE | hote=127.0.0.1 | port=5000
+2026-11-27 14:35:07,222 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:35:09,015 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=3 | agent=27
+2026-11-27 14:38:05,940 | INFO | DEMANDE | hote=127.0.0.1 | port=5000
+2026-11-27 14:38:24,867 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:38:26,300 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=26
+2026-11-27 14:38:26,351 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
+2026-11-27 14:38:42,068 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:38:43,706 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=26
+2026-11-27 14:38:43,852 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
+2026-11-27 14:38:54,959 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:38:56,531 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=26
+2026-11-27 14:38:56,573 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
+2026-11-27 14:39:08,467 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:39:10,238 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=26
+2026-11-27 14:39:10,279 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
+2026-11-27 14:39:37,835 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:39:39,369 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=3 | agent=27
+2026-11-27 14:39:39,410 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
+2026-11-27 14:39:49,473 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:39:51,610 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=26
+2026-11-27 14:39:51,650 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
+2026-11-27 14:40:06,034 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:40:10,324 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=27
+2026-11-27 14:40:10,364 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Agent non autorisé sur ce scanner.
+2026-11-27 14:40:46,176 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:40:47,564 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=31
+2026-11-27 14:40:47,604 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Agent non autorisé sur ce scanner.
+2026-11-27 14:40:58,517 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:40:59,816 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=3 | agent=27
+2026-11-27 14:40:59,856 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Numéro de vol incorrect.
+2026-11-27 14:41:12,294 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:41:13,384 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=3 | agent=27
+2026-11-27 14:41:13,425 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Porte incorrecte.
+2026-11-27 14:41:25,290 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:41:26,446 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=25
+2026-11-27 14:41:26,605 | WARNING | RESULTAT | client=127.0.0.1 | statut=REFUSE | message=Agent non autorisé sur ce scanner.
+2026-11-27 14:43:12,564 | INFO | CONNEXION | client=127.0.0.1
+2026-11-27 14:43:13,718 | INFO | DEMANDE | client=127.0.0.1 | billet=7 | scanner=2 | agent=26
+2026-11-27 14:43:13,758 | INFO | RESULTAT | client=127.0.0.1 | statut=CONTROLES_CONFORMES | message=Vérification réussie.
