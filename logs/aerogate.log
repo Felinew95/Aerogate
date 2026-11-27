@@ -1,0 +1,49 @@
+2026-11-26 16:27:27,532 | INFO | DEMARRAGE | hote=127.0.0.1 | port=5000
+2026-11-26 16:27:50,074 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 16:27:50,074 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-26 16:27:50,112 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 16:28:58,380 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 16:28:58,381 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-26 16:28:58,410 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 16:37:16,032 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 16:37:16,033 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-26 16:37:16,062 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:09:53,696 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:09:53,696 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-26 17:09:53,725 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:11:10,283 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:11:10,283 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:11:10,313 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:11:42,113 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:11:42,114 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=2
+2026-11-26 17:11:42,142 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:12:44,396 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:12:44,397 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:12:44,427 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:14:22,942 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:14:22,943 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:14:22,973 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:20:37,352 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:20:37,353 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:20:37,382 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:21:00,513 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:21:00,514 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:21:00,543 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:21:39,108 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:21:39,109 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:21:39,138 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:22:25,052 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:22:25,052 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:22:25,083 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:22:39,370 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:22:39,370 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:22:39,399 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:24:53,659 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:24:53,659 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=1 | agent=1
+2026-11-26 17:24:53,689 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:49:01,978 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:49:01,979 | INFO | DEMANDE | client=127.0.0.1 | billet=2 | scanner=2 | agent=7
+2026-11-26 17:49:02,121 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
+2026-11-26 17:54:30,252 | INFO | CONNEXION | client=127.0.0.1
+2026-11-26 17:54:30,252 | INFO | DEMANDE | client=127.0.0.1 | billet=1 | scanner=2 | agent=2
+2026-11-26 17:54:30,283 | WARNING | RESULTAT | client=127.0.0.1 | statut=ERREUR_SERVEUR | message=Base de données indisponible.
