@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>main.serveur module &#8212; Project name not set  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="traitement package" href="traitement.html" />
+    <link rel="prev" title="main package" href="main.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-main.serveur">
+<span id="main-serveur-module"></span><h1>main.serveur module<a class="headerlink" href="#module-main.serveur" title="Link to this heading">¶</a></h1>
+<p>Module : serveur.py</p>
+<dl>
+<dt>Description :</dt><dd><p>Ce module assure le fonctionnement du serveur Aérogate.</p>
+<p>Il permet d’établir des connexions avec les clients, de recevoir
+leurs demandes au format JSON, de vérifier les informations des
+billets auprès de la base de données et de leur transmettre une
+réponse.</p>
+<p>Les événements importants sont enregistrés dans un journal.
+Celui-ci utilise un fichier avec rotation automatique et bascule
+vers la console en cas d’erreur d’accès au fichier.</p>
+</dd>
+</dl>
+<p>Auteur : Alexandre BURIN, Menaouer AMMARI, Hugo DELHELLE
+Version : 1.0</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.serveur.init_journal">
+<span class="sig-prename descclassname"><span class="pre">main.serveur.</span></span><span class="sig-name descname"><span class="pre">init_journal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nom_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Aérogate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fichier_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'aerogate.log'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Logger</span></span></span><a class="headerlink" href="#main.serveur.init_journal" title="Link to this definition">¶</a></dt>
+<dd><p>Initialise le journal du serveur.</p>
+<p>Configure le logger du serveur avec le niveau INFO et désactive
+la propagation des messages vers les loggers parents.</p>
+<p>Les messages sont enregistrés dans un fichier avec rotation
+automatique. Si le fichier ne peut pas être créé ou ouvert,
+les messages sont redirigés vers la console.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger configuré pour le serveur.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main.serveur.lancer_serveur">
+<span class="sig-prename descclassname"><span class="pre">main.serveur.</span></span><span class="sig-name descname"><span class="pre">lancer_serveur</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#main.serveur.lancer_serveur" title="Link to this definition">¶</a></dt>
+<dd><p>Lance le serveur Aérogate.</p>
+<p>Initialise le socket serveur, attend les connexions des clients
+et traite leurs demandes successivement.</p>
+<p>Chaque demande est reçue au format JSON, vérifiée puis transmise
+à la fonction de contrôle des billets. Une réponse JSON est ensuite
+envoyée au client.</p>
+<p>Les événements de connexion, les demandes et les résultats sont
+enregistrés dans le journal.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main.serveur.lecture_demande">
+<span class="sig-prename descclassname"><span class="pre">main.serveur.</span></span><span class="sig-name descname"><span class="pre">lecture_demande</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adresse_ip_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connexion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">journal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#main.serveur.lecture_demande" title="Link to this definition">¶</a></dt>
+<dd><p>Lit et vérifie la demande envoyée par un client.</p>
+<p>Récupère le message transmis par le client, vérifie sa longueur
+et son format JSON, puis retourne les données sous forme de
+dictionnaire.</p>
+<p>Les informations relatives à la demande sont enregistrées dans
+le journal, sans exposer les données personnelles du passager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adresse_ip_client</strong> – Adresse IP du client connecté.</p></li>
+<li><p><strong>connexion</strong> – Socket associé à la connexion du client.</p></li>
+<li><p><strong>journal</strong> – Logger utilisé pour enregistrer les événements.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire contenant les données de la demande.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main.serveur.main">
+<span class="sig-prename descclassname"><span class="pre">main.serveur.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#main.serveur.main" title="Link to this definition">¶</a></dt>
+<dd><p>Point d’entrée principal du serveur.</p>
+<p>Lance le serveur et intercepte l’interruption clavier afin
+de permettre un arrêt propre du programme.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Project name not set</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Serveur_Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config.html">config package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">main package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traitement.html">traitement package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Serveur_Python</a><ul>
+  <li><a href="main.html">main package</a><ul>
+      <li>Previous: <a href="main.html" title="previous chapter">main package</a></li>
+      <li>Next: <a href="traitement.html" title="next chapter">traitement package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/main.serveur.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

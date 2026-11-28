@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>traitement.verifs module &#8212; Project name not set  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="traitement.connexion_bd module" href="traitement.connexion_bd.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-traitement.verifs">
+<span id="traitement-verifs-module"></span><h1>traitement.verifs module<a class="headerlink" href="#module-traitement.verifs" title="Link to this heading">¶</a></h1>
+<p>Module : verifs.py</p>
+<dl class="simple">
+<dt>Description :</dt><dd><p>Ce module permet de vérifier les informations d’un billet d’embarquement
+transmises par un client, de contrôler les autorisations de l’agent
+et de générer une réponse adaptée au résultat des vérifications.</p>
+</dd>
+</dl>
+<p>Auteur : Alexandre BURIN, Menaouer AMMARI, Hugo DELHELLE
+Version : 1.0</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="traitement.verifs.creer_reponse">
+<span class="sig-prename descclassname"><span class="pre">traitement.verifs.</span></span><span class="sig-name descname"><span class="pre">creer_reponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">billet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demande</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#traitement.verifs.creer_reponse" title="Link to this definition">¶</a></dt>
+<dd><p>Génère la réponse correspondant aux résultats des vérifications.</p>
+<p>La fonction vérifie successivement l’existence du billet,
+les autorisations de l’agent, la porte d’embarquement
+et le numéro de vol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> – Informations de l’agent récupérées en base</p></li>
+<li><p><strong>billet</strong> – Informations du billet récupérées en base</p></li>
+<li><p><strong>demande</strong> – Données transmises par le client</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Réponse contenant le statut et le message de contrôle.
+En cas de contrôles conformes, elle contient également
+le nom du passager et son numéro de siège</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="traitement.verifs.verifier_billet">
+<span class="sig-prename descclassname"><span class="pre">traitement.verifs.</span></span><span class="sig-name descname"><span class="pre">verifier_billet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demande</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#traitement.verifs.verifier_billet" title="Link to this definition">¶</a></dt>
+<dd><p>Vérifie un billet d’embarquement à partir d’une demande client.</p>
+<p>La fonction valide le format et les données de la demande,
+récupère les informations du billet et de l’agent dans la base
+de données, puis génère une réponse selon le résultat des contrôles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>demande</strong> – Données transmises par le client</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Réponse contenant le statut et le message de vérification,
+ainsi que les informations du passager si les contrôles
+sont conformes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – Si la demande ou ses données sont incorrectes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="traitement.verifs.verifier_identifiants">
+<span class="sig-prename descclassname"><span class="pre">traitement.verifs.</span></span><span class="sig-name descname"><span class="pre">verifier_identifiants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demande</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#traitement.verifs.verifier_identifiants" title="Link to this definition">¶</a></dt>
+<dd><p>Vérifie la validité des identifiants présents dans la demande.</p>
+<p>Chaque identifiant doit être un entier strictement positif.
+Les valeurs booléennes sont également rejetées.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>demande</strong> – Dictionnaire contenant les données de la demande</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None si les identifiants sont conformes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – Si un identifiant est absent ou incorrect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="traitement.verifs.verifier_porte_et_num_vol">
+<span class="sig-prename descclassname"><span class="pre">traitement.verifs.</span></span><span class="sig-name descname"><span class="pre">verifier_porte_et_num_vol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demande</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#traitement.verifs.verifier_porte_et_num_vol" title="Link to this definition">¶</a></dt>
+<dd><p>Vérifie la conformité de la porte d’embarquement et du numéro de vol.</p>
+<p>Chaque champ doit contenir une chaîne de caractères ASCII
+alphanumérique dont la longueur respecte la limite configurée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>demande</strong> – Dictionnaire contenant les données de la demande</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None si les champs sont conformes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – si un champ est absent ou incorrect</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Project name not set</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Serveur_Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="config.html">config package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="traitement.html">traitement package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Serveur_Python</a><ul>
+  <li><a href="traitement.html">traitement package</a><ul>
+      <li>Previous: <a href="traitement.connexion_bd.html" title="previous chapter">traitement.connexion_bd module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/traitement.verifs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
