@@ -70,7 +70,7 @@ Pour modifier l'adresse et le port d'écoute, modifiez les variables `HOST_SERVE
 
 # Adresse du serveur
 HOTE_SERVEUR: str = "0.0.0.0" # Écoute sur toutes les interfaces réseau
-# HOTE_SERVEUR: str = "192.168.1.26" # Écoute sur l'adresse IP spécifique de VOTRE réseau 
+# HOTE_SERVEUR: str = "192.168.1.26" # Écoute sur l'adresse IP spécifique de VOTRE interface réseau 
 
 # Port du serveur
 PORT_SERVEUR: int = 5036 # Port valable entre 1024 à 49151 pour une utilisation personnelle
