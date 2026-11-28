@@ -59,7 +59,45 @@ Démarrer le serveur Python avec la commande suivante depuis le répertoire Serv
 python -m main.serveur
 ```
 
-Par défaut, le serveur écoute sur l'adresse locale `127.0.0.1` et le port `5000`.
+Par défaut, le serveur écoute sur l'adresse locale `127.0.0.1` et le port `5000` accessible uniquement depuis la machine locale.
+
+Pour modifier l'adresse et le port d'écoute, modifiez les variables `HOST_SERVEUR` et `PORT_SERVEUR` dans le fichier `Serveur_Python/config/constantes.py`.
+
+```python
+# -------------------------------------------------------------------
+# Exemple de configuration du serveur 
+# -------------------------------------------------------------------
+
+# Adresse du serveur
+HOTE_SERVEUR: str = "0.0.0.0" # Écoute sur toutes les interfaces réseau
+# HOTE_SERVEUR: str = "192.168.1.26" # Écoute sur l'adresse IP spécifique de VOTRE réseau 
+
+# Port du serveur
+PORT_SERVEUR: int = 5036 # Port valable entre 1024 à 49151 pour une utilisation personnelle
+```
+
+Pour modifier les identifiants de connexion à la base de données avec vos propres informations, modifiez les variables `HOTE_BD`, `PORT_BD`, `NOM_BD`, `USER_BD` et `PASSWD_BD` dans le fichier `Serveur_Python/config/constantes.py`.
+
+```python
+# -------------------------------------------------------------------
+# Exemple de configuration de la base de données
+# -------------------------------------------------------------------
+
+# Hôte par défaut de la base de données
+HOTE_DB: str = "aerogate"
+
+# Port par défaut de la base de données
+PORT_DB: str = "5432"
+
+# Nom par défaut de la base de données
+NOM_DB: str = "aerogate"
+
+# Utilisateur par défaut de la base de données
+USER_DB: str = "burin"
+
+# Mot de passe par défaut de la base de données
+PASSWD_DB: str = "A123456*"
+```
 
 ## 4. Lancer le client
 
